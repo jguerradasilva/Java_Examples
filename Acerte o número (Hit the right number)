@@ -1,0 +1,49 @@
+//Acerte o número (Hit the right number)
+//By jguerradsilva
+
+//Jogo que gera um número aleatório para que seja acertado pelo usuário. O jogo começa com a ordem de acertar o número
+//Essa ordem aparece em um tempo aleatório na tela, após a ordem, um número é gerado e mostrado na tela
+//dependendo do tempo que você leva para acertar o número, o programa calcula o tempo e mostra no final em segundos
+
+// It's a game that generates a random number to be hit by the user. The game starts with an order, in a random time, 
+// to hit the number on the screen. After that, a number is generated and shown on the screen.
+// Depending on the time that you take to hit the number, the program calculates and shows the time that you took to hit the number 
+// at the end of the game in seconds.
+
+import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
+
+public class Principal {
+
+    public static void main(String[] args) throws InterruptedException {
+       
+       Scanner input = new Scanner (System.in); //variavel para capturar o numero do usuario (variable to catch the user's number)
+       
+       int numeroAleatorio = (int) (1 + Math.random() * 10); //gera um numero aleatorio de 1-10 (generates a random number one to ten)
+       int tempo = (int) (1 + Math.random()*5); //gera o tempo aleatório para mostrar a ordem (generates the random time to show the order)
+
+       Thread.sleep(tempo*1000); //criar uma thread com tempo aletório para mostrar a ordem (creates a thread with the random time to show the order)
+       
+       System.out.println("Agora! Acerte o número! (Now! Hit the right number!)");
+       long start = System.nanoTime(); //variável armazena o inicio do jogo (variable that stores the game's begin)
+       System.out.println(numeroAleatorio); //mostra o número aleatório (shows the random number)
+       int numero = input.nextInt(); //captura o número do usuário (catch the user's number)
+       
+       while(numero!=numeroAleatorio){ //laço de repetição que solicita o numero do usuario enquanto estiver errado 
+                                      //(while loop statement that demand the user's number while the nuber is wrong)
+           
+           System.out.println("Número errado! (The number is wrong!)");
+           numero = input.nextInt();
+       }
+       
+       long end = System.nanoTime(); //variavel armazena o final do jogo (variable that stores the game's end)
+       long intervalo = end-start; //calcula o intervalo do tempo (calculate the time's interval)
+       
+       long convert = TimeUnit.SECONDS.convert(intervalo, TimeUnit.NANOSECONDS); //converte nanosegundos em segundos (convert nanoseconds in seconds)
+       
+       System.out.println("Você demorou (It took you... ) " + 
+       convert + " segundo(s) para acertar o número! (seconds to hit the right number!)"); 
+       //mostra o tempo que levou para acertar o número (shows the time it took to hit the number)
+    }
+    
+}
