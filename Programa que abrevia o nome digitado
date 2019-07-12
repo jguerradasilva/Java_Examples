@@ -1,0 +1,42 @@
+/*Um programa que recebe um nome completo na forma de uma String e
+mostra a abreviatura deste nome. Não se abrevia as palavras com 2 ou
+menos letras, retirando-as da abreviação. A abreviatura vem separada por pontos. 
+Ex: Paulo Jose de Almeida Prado. Abreviatura: P. J. de A. P.*/
+
+/ * A program that gets a full name in the form of a String and
+shows the abbreviation for this name. Do not abbreviate words with 2 or
+less letters, removing them from the abbreviation. The abbreviation is separated by dots.
+Ex: Paulo Jose de Almeida Prado. Abbreviation: P. J. de A. P. * /
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Principal {
+
+    public static void main(String[] args) {
+        
+        Scanner input = new Scanner (System.in);
+        String nome;
+        String[] nomeSplit;
+            
+        System.out.printf("Digite um nome (Type a name): ");
+        nome = input.nextLine();
+        
+        
+        nomeSplit = nome.split(" "); //separa o nome em cada posição da array por espaços entre os nomes 
+                                    // separates the name in each position of the array by spaces between the names
+        
+        for (String arrayIndex : nomeSplit) { //for aprimorado que percorre o array
+                                              //foreach that runs through the array
+            
+            if (arrayIndex.length() <= 3) { //para palavras menores com igual ou menos de 3 letras, se mantém na abreviação
+                                            //for smaller words of less than or equal to 3 letters, is kept in abbreviation
+                System.out.printf(arrayIndex + " ");
+                
+            } else {
+                System.out.printf("%c. ", arrayIndex.charAt(0)); //imprime a primeira letra de cada nome
+                                                                 // prints the first letter of each name
+            }
+        }
+    }         
+}
