@@ -1,0 +1,29 @@
+/*Programa que inverte uma String digitada*/
+/*Program that reverses a String entered*/
+
+//by Jerfeson Guerra
+
+import java.util.Scanner;
+
+public class Principal {
+
+    public static void main(String[] args) {
+        
+        
+        Scanner input = new Scanner(System.in);
+        String nome;
+        char[] nomeArray;
+        
+        System.out.printf("Digite uma String: ");
+        nome = input.nextLine();
+        
+        nomeArray = nome.toCharArray();
+        
+        for(int i = nomeArray.length-1; i!=-1; i--){ //percorre a String inversamente
+                                                     //scrolls the string inversely
+            System.out.printf(nomeArray[i] + "");
+            
+        }
+        System.out.println();  
+    }   
+}
