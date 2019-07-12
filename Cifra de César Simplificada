@@ -1,0 +1,59 @@
+/* Cifra de César Simplificada */
+/* Simplified Caesar's Cipher */
+
+//by Jerfeson Guerra
+
+//ASCII a = 97 ---> z = 122
+
+import java.util.*;
+public class Principal {
+    
+    public static void main(String[] args) {
+        
+        Scanner input = new Scanner(System.in);
+        
+        String texto;
+        int chave;
+        int txtASCII;
+        
+        System.out.printf("Digite o texto a ser encriptado: ");
+        texto = input.nextLine();
+        
+        System.out.println();
+        
+        System.out.printf("Digite a chave: ");
+        chave = input.nextInt();
+        
+        System.out.println();
+        
+        texto = texto.toLowerCase();
+        char[] arrayTxt = texto.toCharArray();
+
+        for(int i = 0; i<arrayTxt.length; i++){
+        
+            txtASCII = (int)arrayTxt[i]+chave; //faz a conversão do char para int (ASCII)
+                                               // make the conversion from char to int (ASCII)
+        
+            while(txtASCII>122){ //caso passe do limite a = 97 e z = 122
+                                 // if it passes the limit a = 97 and z = 122
+            
+                txtASCII -= 26; //diferença do intervalo entre o valor A = 97 e Z = 122
+                                //Caso chave = 1 letra = Z, não haveria Z+1 = 123, 
+                                //então o programa pularia para A = 97
+                                //Então 123-26 = 97 que é igual A e assim sucessivamente
+                                //caso Z+5 = 127, deveria pular para E = 5(122+5=127) que em ASCII E = 101
+                                //então 127-26 = 101 (E em ASCII) e assim sucessivamente...
+                                
+                                // difference in the interval between the value A = 97 and Z = 122
+                                // Key case = 1 letter = Z, there would be no Z + 1 = 123,
+                                // then the program would jump to A = 97
+                                // Then 123-26 = 97 which is equal to A and so on
+                                // case Z + 5 = 127, should jump to E = 5 (122 + 5 = 127) than in ASCII E = 101
+                                // then 127-26 = 101 (and in ASCII) and so on ...
+            }
+            System.out.printf((char) txtASCII + ""); //converte devolta para char com a chave
+                                                     // convert back to char with key
+        }
+        System.out.println();
+    } 
+}
