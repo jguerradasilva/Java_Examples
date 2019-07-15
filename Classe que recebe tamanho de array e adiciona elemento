@@ -1,0 +1,66 @@
+package Array;
+
+/**
+ *
+ * @author Jerfeson Guerra
+ */
+public class Array {
+    
+    private int[] array;
+    private int nAtual = 0;
+    private int nMax;
+    
+/*    public int getnAtual(){
+    
+        return nAtual;
+    }
+    
+    public int getnMax(){
+    
+        return nMax;
+    }
+    public int getArrayPosition(int position){
+    
+        if(posicao<this.array.length)
+            return array[position];
+        else
+            return 0; 
+    }
+*/    
+    public Array(int sizeArray){
+    
+        this.array = new int[sizeArray];
+        this.nMax = sizeArray;
+    }
+    
+    public boolean adicionar(int n){
+
+        if(this.nAtual<this.array.length){
+            
+            this.array[this.nAtual] = n;
+            this.nAtual++;
+            return true;
+        
+        }else{
+            
+            return false;
+        }
+    }
+    
+    public double calculaMedia(){
+        
+        double media;
+        int soma = 0;
+        
+        for(int i=0; i<this.array.length; i++){
+
+            soma += this.array[i];
+        }
+        
+        media = soma/this.array.length;
+        return media;
+    }
+}
+   
+    
+
