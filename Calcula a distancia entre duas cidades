@@ -1,0 +1,75 @@
+@@ -1,74 +0,0 @@
+/*  A distância entre várias cidades é dada pela tabela abaixo (em km):
+   1  2  3  4  5
+1 00 15 30 05 12
+2 15 00 10 17 28
+3 30 10 00 03 11
+4 05 17 03 00 80
+5 12 28 11 80 00 
+
+Programa que calcula a distância entre as cidades informadas.
+
+The distance between several cities is given by the table below (in km):
+  1   2  3  4  5
+1 00 15 30 05 12
+2 15 00 10 17 28
+3 30 10 00 03 11
+4 05 17 03 00 80
+5 12 28 11 80 00 
+
+Program that calculates the distance between the cities informed.
+
+*/
+
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Principal {
+
+    public static void main(String[] args) {
+
+        int[][] distances = {{0,15,30,5,12},
+                             {15,0,10,17,28},
+                             {30,10,0,3,11},
+                             {5,17,3,0,80},
+                             {12,28,11,80,0}}; //Array bidimensional que simula a tabela acima
+                                               // Two-dimensional array that simulates the above table
+        int cidade1, cidade2;
+        int sinal = 0;
+        int soma = 0;
+        ArrayList<Integer> arrayPercursos = new ArrayList();
+
+        Scanner input = new Scanner (System.in);
+
+        while(sinal!=-1){
+
+            System.out.printf("Digite a 1ª cidade: ");
+            cidade1 = input.nextInt();
+
+            System.out.println();
+
+            System.out.printf("Digite a 2ª cidade:");
+            cidade2 = input.nextInt();
+
+            arrayPercursos.add(distances[cidade1-1][cidade2-1]); //Para que as cidades informadas não saiam do limite da array
+                                                                 //diminui-se uma posicao
+
+                                                                 // So that the informed cities do not pass the limit of the array
+                                                                 // a position is decreased
+
+            System.out.println();
+
+            System.out.println("Deseja continuar? 0 para sim, -1 para não: ");
+            sinal = input.nextInt();
+        }
+
+        for(int i = 0; i<arrayPercursos.size(); i++){
+
+            soma += arrayPercursos.get(i); //soma das distâncias
+                                           //sum of distances
+        }
+
+        System.out.println("A soma das distâncias entre as cidades informadas é de: " + soma + "Km");
+    }   
+}
